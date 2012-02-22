@@ -1,6 +1,7 @@
 #!/bin/bash
-rm -rf /home/banerjee/web/publish
-mkdir -p /home/banerjee/web/publish
-./scripts/python/generate.py /home/banerjee/web/templates/site.html /home/banerjee/web/content /home/banerjee/web/publish
-cd /home/banerjee/web/publish
+ROOT="$HOME/Website"
+rm -rf "$ROOT/publish"
+mkdir -p "$ROOT/publish"
+./scripts/python/generate.py $ROOT/templates/site.html $ROOT/content $ROOT/publish
+cd $ROOT/publish
 ln -s overview.html index.html
