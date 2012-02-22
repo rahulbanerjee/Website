@@ -1,0 +1,10 @@
+The Delaunay Triangulation is the Dual of the Voronoi Diagram.
+
+<p>
+We start by reviewing some standard geometric constructions.
+Given a discrete set of sample points in the Voronoi cell of a sample point is that part of closer to it than to any other sample. The Voronoi diagram is the decomposition of induced by the Voronoi cells. Each Voronoi cell is a convex polytope, and its vertices are the Voronoi vertices; when is nondegenerate, each Voronoi vertex is equidistant from exactly points. These points are the vertices of the Delaunay simplex, dual to the Voronoi vertex. A Delaunay simplex, and hence each of its faces, has a circumsphere empty of other points of the set of Delaunay simplices form the Delaunay triangulation.
+</p>
+
+<p>
+Computing the Delaunay triangulation essentially computes the Voronoi diagram as well.
+</p>

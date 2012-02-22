@@ -1,0 +1,181 @@
+Exploring the beautiful world of fractals
+
+<h2>The Mandelbrot Set</h2>
+<p>
+<img src="../images/fractal.png">
+</p>
+
+<h2>A Crash Course in Complex Numbers</h2>
+<p>
+To draw the Mandelbrot set, we need to understand complex numbers.
+<ul>
+
+<li>
+A complex number consists of a real part (x) and an imaginary part (y), usually represented as
+<br>
+Z = x + iy
+</li>
+
+<li>
+The usual rules of multiplication apply, as long as one remembers that
+<br>
+i * i = -1
+</li>
+
+<li>
+Squaring a complex number is done this way
+<br>
+Z * Z = (x + iy) * (x + iy) = x * (x + iy) + iy * (x + iy)
+<br>
+= (x * x) - (y * y) + i(2 * x * y)
+</li>
+
+<li>
+Treating the real and imaginary components like the X and Y components
+of the 2D Cartesian plane, we get the Argand Plane.
+<br>
+We can "center" and "stretch" each dimension (component) independently.
+<br>
+So, for instance, we could map 2D points that form a rectangle on-screen
+onto another rectangle in the Argand Plane.
+</li>
+
+<li>
+The "modulus" of a complex number Z, represented by |Z|, is its distance from the origin in the Argand Plane.
+<br>
+|Z| = sqrt((x * x) + (y * y))
+</li>
+</ul>
+</p>
+
+<h2>Plotting the Mandelbrot Set</h2>
+<p>
+To color a single pixel, first convert it into a point on the Argand Plane,
+then figure out a number using the following method (given below),
+then finally map this number to a color.
+<ul>
+
+<li>
+Set the complex number C to the current pixel's position (via your chosen mapping) in the Argand plane
+<br>
+C = x + iy
+<br>
+Usually the current pixel's position spans (0, 0) to (width - 1, height - 1)
+<br>
+and one possible mapping (for a square image) is onto the range (-2.5, -2) to (1.5, 2)
+</li>
+
+<li>
+Initialize the complex number Z to C
+<br>
+Z = C
+</li>
+
+<li>
+To get the new value of Z, square Z and add C to it
+<br>
+Z = (Z * Z) + C
+</li>
+
+<li>
+Repeat the square-and-add step until |Z| exceeds 2.
+<br>
+An equivalent check is to compare the square of |Z| against 4.
+<br>
+(x * x) + (y * y) < 4
+</li>
+
+<li>
+Either the comparison fails after a certain number of repetitions, or it never fails.
+<br>
+Hence we don't repeat the square-and-add step indefinitely, but terminate after a "max iteration limit".
+<br>
+The number of iterations completed (before the check fails) is our number for this pixel.
+<br>
+If the check never fails (and hits the max limit instead), the pixel is usually colored black.
+</li>
+
+<li>
+A quick mapping from iteration count to a color is to set the grey level based on
+what percentage of the max limit was reached:
+<br>
+level = iteration_count / MAX_ITERATION_LIMIT
+<br>
+(r, g, b) = (level, level, level)
+<br>
+(when MAX_ITERATION_LIMIT is reached, we choose black)
+</li>
+</ul>
+</p>
+
+<h2>Code</h2>
+<p>
+First of all, here's the mapping from the screen coordinate system (row, col) to the Argand Plane (x, y):
+</p>
+<pre class="brush: cpp">
+void map_to_xy(unsigned int row, unsigned int col,
+               unsigned int height, unsigned int width,
+               float& x, float& y)
+{
+    x = -2.5f + ((col * 1.0f) / width) * 4.0f;
+    y =  2.0f - ((row * 1.0f) / height) * 4.0f;
+}
+</pre>
+
+<p>Here's the repeated square-and-add routine:</p>
+<pre class="brush: cpp">
+unsigned int count_iters(float x, float y)
+{
+    float oldZ_x, oldZ_y, newZ_x, newZ_y, c_x, c_y;
+    newZ_x = c_x = x;
+    newZ_y = c_y = y;
+    unsigned int i = 0;
+    do {
+        oldZ_x = newZ_x;
+        oldZ_y = newZ_y;
+        newZ_x = (oldZ_x * oldZ_x) - (oldZ_y * oldZ_y) + c_x;
+        newZ_y = 2 * oldZ_x * oldZ_y + c_y;
+        i++;
+    } while ((newZ_x * newZ_x) + (newZ_y * newZ_y) &lt; 4.0f);
+
+    return i;
+}
+</pre>
+
+<p>This routine implements the color mapping discussed above:</p>
+<pre class="brush: cpp">
+void map_iters_to_color(unsigned int i, float& r, float& g, float& b)
+{
+    float f = (i * 1.0f) / MAX_ITERATION_LIMIT;
+    r = g = b = f;
+}
+</pre>
+
+<p>And here's the top-level routine:</p>
+<pre class="brush: cpp">
+void draw_mandelbrot()
+{
+    float x, y;
+    unsigned int row, col, iters;
+    float red, green, blue;
+    for (row = 0; row &lt; height; row++) {
+        for (col = 0; col &lt; width; col++) {
+            map_to_xy(row, col, height, width, &x, &y);
+            iters = count_iters(x, y);
+            if (iters &lt; MAX_ITERATION_LIMIT) {
+                map_iters_to_color(iters, red, green, blue);
+            } else {
+                red = green = blue = 0.0f;
+            }
+            // this depends on your choice of graphics library
+            draw_pixel(row, col, red, green, blue);
+        }
+    }
+}
+</pre>
+
+<h2>Further Exploration</h2>
+<p>
+Fractals are actually a branch of mathematics and there's a lot of material out there for the interested.
+I highly encourage you to visit the <a href="http://en.wikipedia.org/wiki/Mandelbrot_set">Wikipedia page for the Mandelbrot Set</a> as well as its <a href="http://mathworld.wolfram.com/MandelbrotSet.html">Wolfram MathWorld page</a>.
+</p>

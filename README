@@ -1,0 +1,4 @@
++ Uses Jinja2 (generate.py) with a single template (site.html), that
+pulls in a stylesheet (base.css).
++ All input is *.txt in "content/*" -- all output goes into "publish/*.html"
++ All links are relative (to ../images/foo.png, or ../css/base.css, etc.)

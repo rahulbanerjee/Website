@@ -1,0 +1,10 @@
+So what is Radiosity anyway?
+
+<p>
+Radiosity is a global illumination algorithm used in 3D computer graphics rendering. Radiosity is an application of the finite element method to solving the rendering equation for scenes with purely diffuse surfaces. Unlike Monte Carlo algorithms (such as path tracing) which handle all types of light paths, typical radiosity methods only account for paths which leave a light source and are reflected diffusely some number of times (possibly zero) before hitting the eye. Such paths are represented as "LD*E".
+</p>
+
+<h2>Radiosity calculations are viewpoint independent</h2>
+<p>
+This increases the computations involved, but makes them useful for all viewpoints.
+</p>

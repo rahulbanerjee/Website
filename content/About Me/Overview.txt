@@ -1,0 +1,8 @@
+Hello World!
+
+<p>This is my personal webpage. I'll try and post useful things here.</p>
+
+<p>
+Explore the different sections and please feel free to mail me feedback
+(my address is in the top left corner).
+</p>

@@ -1,0 +1,7 @@
+First post.
+
+<p>This is text.</p>
+
+<p>This will be a [www.irtc.org|link to IRTC]</p>
+
+<p>Here, we shall have an [path_to_img.png|caption]</p>

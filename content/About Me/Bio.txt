@@ -1,0 +1,36 @@
+A Little Bit About Me
+
+<h2>Academia</h2>
+<p>
+These are the schools I've attended (or am currently attending)
+<ul>
+<li><a href="www.klyuniv.ac.in">University of Kalyani</a></li>
+<li><a href="www.cse.iitk.ac.in">Indian Institute of Technology, Kanpur</a></li>
+<li><a href="www.cs.washington.edu">University of Washington</a></li>
+</ul>
+</p>
+<img src="../images/academia.png">
+
+<h2>Industry</h2>
+<p>
+<ul>
+<li>
+I worked at <a href="http://www.nvidia.com">NVIDIA</a> for four-and-a-half years,
+on a variety of systems software, both for embedded and desktop platforms. I also helped create the
+<a href="http://www.youtube.com/watch?v=r1sN1ELJfNo">world's first OpenCL implementation</a> on a GPU.
+</li>
+<li>
+I was with <a href="http://www.technicolor.com/">Technicolor</a> for a year-and-a-half,
+where I worked on <a href="http://www.dreamworksanimation.com/">DreamWorks</a> projects like
+<a href="http://www.imdb.com/title/tt0448694/">this</a> and
+<a href="http://www.imdb.com/title/tt1725156/">this</a>
+</li>
+</p>
+</ul>
+<img src="../images/industry.png">
+
+<h2>Hobbies</h2>
+<p>
+I love music. When I can make time, I play my digital piano (<a href="http://usa.yamaha.com/products/musical-instruments/keyboards/digitalpianos/p_series/p-90/">Yamaha P90</a>). Explore the "Music" section for more.
+</p>
+<img src="../images/p90.jpg">

@@ -1,0 +1,559 @@
+/*
+djangoproject.com by Wilson Miner (wilson@lawrence.com)
+Copyright (c) 2005 Lawrence Journal-World. Please don't steal.
+*/
+
+
+/* SETUP */
+
+body {
+    margin:0;
+    padding:0;
+    background:#092e20;
+    color:white;
+}
+body, th, td {
+    font:12px/1.4em Verdana,sans-serif;
+}
+#container {
+    position:relative;
+    min-width:55em;
+    max-width:130em;
+}
+
+/* LINKS */
+
+a {text-decoration: none;
+  }
+a img {border: none;
+      }
+a:link, a:visited {
+    color:#ffc757;
+}
+#content-main a:link, #content-main a:visited {
+    color:#ab5603;
+    text-decoration:underline;
+}
+#content-secondary a:link, #content-secondary a:visited {
+    color:#ffc757;
+    text-decoration:none;
+}
+a:hover {
+    color:#ffe761;
+}
+#content-main a:hover {
+    background-color:#E0FFB8;
+    color:#234f32;
+    text-decoration:none;
+}
+#content-secondary a:hover {
+    color:#ffe761;
+    background:none;
+}
+#content-main h2 a, #content-main h3 a {
+    text-decoration:none !important;
+}
+
+/* HEADER */
+
+#header {
+    position:relative;
+    background:#092e20;
+    height:60px;
+}
+#header h1#logo {
+    margin:0;
+    width:240px;
+    height:60px;
+    position:absolute;
+    bottom:-20px;
+    left:0px;
+}
+
+/* NAV */
+
+#section-list {
+    position:absolute;
+    margin:0;
+    bottom:-20px;
+    right:0;
+    font-family:"Trebuchet MS",sans-serif;
+    white-space:nowrap;
+    background:#092e20;
+}
+#section-list li {
+    display:block;
+    font-size:125%;
+    float:left;
+    list-style-type:none;
+    margin:0;
+    padding:0;
+}
+#section-list a {
+    display:block;
+    float:left;
+    padding:5em 16px 10px 16px;
+    background:#092e20;
+}
+#section-list a:hover {
+    color:white;
+    background:#234f32;
+}
+#section-current a,
+#section-current a:hover {
+    color:white;
+    background:#092e20;
+}
+
+#billboard {
+    background:#94da3a;
+    border-bottom:0px solid #092e20;
+    padding-bottom:0px;
+    margin:0;
+}
+#billboard h2 {
+    height:1em;
+    padding:1em;
+    margin:0;
+    color:white;
+    font-weight:bold;
+    font-size:125%;
+    margin-left:1em;
+}
+/* COLUMNS */
+#columnwrap {
+    background:#234f32;
+    margin-top:0px;
+    padding-top:0px;
+    padding-bottom:0px;
+    padding-right:0px;
+}
+#subwrap {
+    background:#326342;
+    width:75%;
+    float:right;
+    padding-bottom:0px;
+}
+#content-main {
+    float:right;
+    width:75%;
+    background:white;
+    color:black;
+    padding-bottom:0px;
+}
+#generic #content-main, #code #content-main {
+    width:100%;
+}
+#content-main * {
+    margin-left:22px;
+    margin-right:24px;
+}
+#content-main * * {
+    margin-left:0;
+    margin-right:0;
+}
+.sidebar {
+    font-size:92%;
+}
+.sidebar * {
+    margin-left:14px;
+    margin-right:14px;
+}
+.sidebar * * {
+    margin-left:0;
+    margin-right:0;
+}
+#content-related {
+    float:right;
+    width:25%;
+}
+#content-related li {
+    font-size:125%;
+}
+
+#content-related-selected a,
+#content-related-selected a:hover {
+    color:white;
+}
+
+#content-secondary {
+    clear:both;
+    background:#487858;
+    margin-left:0;
+    margin-right:0;
+    margin-top:5px;
+    margin-bottom: 0px;
+    padding:10px 24px;
+    color:white;
+}
+
+/* CONTENT */
+
+h1,h2,h3,h4 {
+    margin-top:.8em;
+    font-family:"Trebuchet MS",sans-serif;
+    font-weight:normal;
+}
+h1 {
+    font-size:218%;
+    margin-top:.6em;
+    margin-bottom:.6em;
+    color:#092e20;
+    line-height:1.1em;
+}
+h2 {
+    font-size:150%;
+    margin-top:1em;
+    margin-bottom:.2em;
+    line-height:1.2em;
+    color:#487858;
+}
+h3 {
+    font-size:125%;
+    font-weight:bold;
+    margin-bottom:.2em;
+    color:#092e20;
+}
+h4 {
+    font-size:110%;
+    font-weight:bold;
+    margin-bottom:-2px;
+    margin-top:1.2em;
+    color:#234D32;
+}
+
+h4 tt, h4 .literal {
+    text-transform:none;
+}
+h5 {
+    font-size:1em;
+    font-weight:bold;
+    margin-top:1.5em;
+    margin-bottom:3px;
+}
+p, ul, dl {
+    margin-top:.6em;
+    margin-bottom:.8em;
+}
+hr {
+    color:#ccc;
+    background-color:#ccc;
+    height:1px;
+    border:0;
+}
+p.date {
+    color:#487858;
+    margin-top:-.2em;
+}
+p.more {
+    margin-top:-.4em;
+}
+.sidebar p.date {
+    color:#90ba9e;
+}
+#content-secondary h2, .sidebar h2 {
+    color:white;
+}
+#content-secondary h3, .sidebar h3 {
+    color:#9aef3f;
+}
+#content-secondary h2:first-child {
+    margin-top:.6em;
+}
+.sidebar h2:first-child {
+    margin-top:.8em;
+}
+#content-main h2, #content-main h3 {
+    margin-top:1.2em;
+}
+h2.deck {
+    margin-bottom:.6em;
+    color:#487858;
+}
+ins {
+    text-decoration: none;
+}
+ins a {
+    text-decoration: none;
+}
+
+/* LISTS */
+
+ul {
+    padding-left:2em;
+}
+ol {
+    padding-left:30px;
+}
+ul li {
+    list-style-type:square;
+    margin-bottom:.4em;
+}
+ul ul {
+    padding-left:1.2em;
+}
+ul ul ul {
+    padding-left:1em;
+}
+ul.linklist, ul.toc {
+    padding-left:0;
+}
+ul.toc ul {
+    margin-left:.6em;
+}
+ul.toc ul li {
+    list-style-type:square;
+}
+ul.toc ul ul li {
+    list-style-type:disc;
+}
+ul.linklist li, ul.toc li {
+    list-style-type:none;
+}
+dt {
+    font-weight:bold;
+    margin-top:.5em;
+    font-size:1.1em;
+}
+dd {
+    margin-bottom:.8em;
+}
+dl.index dt {
+    font-weight: normal;
+}
+
+/*  RSS  */
+
+a.rss {
+    font:bold 10px Verdana, sans-serif;
+    padding:0 .2em;
+    border: 1px solid;
+    text-decoration:none;
+    background:#f60;
+    color: #fff;
+    border-color:#ffc8a4 #7d3302 #3f1a01 #ff9a57;
+    margin:0 3px;
+    vertical-align:middle;
+}
+#content-main a.rss {
+    color:#fff;
+    text-decoration:none;
+}
+a.rss:hover, a.rss:link, a.rss:visited {
+    color:#fff;
+    text-decoration:none;
+}
+
+/* BLOCKQUOTES */
+
+#weblog blockquote {
+    padding-left:0.8em;
+    padding-right:1em;
+    font:125%/1.2em "Trebuchet MS", sans-serif;
+    color:#234f32;
+    border-left:2px solid #94da3a;
+}
+.sidebar blockquote {
+    margin-top:1.5em;
+    margin-bottom:1.5em;
+}
+.sidebar blockquote p {
+    font:italic 175%/1.2em "Trebuchet MS",sans-serif;
+    color:#94da3a;
+}
+.sidebar blockquote cite {
+    display:block;
+    font-style:normal;
+    line-height:1.2em;
+    margin-top:-.8em;
+    color:#94da3a;
+}
+.sidebar cite strong {
+    font-weight:normal;
+    color:white;
+}
+
+/* CODE BLOCKS */
+
+.literal {
+    white-space:nowrap;
+}
+.literal, .literal-block {
+    color:#234f32;
+}
+.sidebar .literal {
+    color:white;
+    background:transparent;
+    font-size:11px;
+}
+
+dt .literal, table .literal {
+    background:none;
+}
+
+/* DOCS */
+
+#documentation h2,
+#documentation h3,
+#documentation h4 {
+    margin-top:1.4em;
+}
+#documentation dd {
+    margin-left:1em;
+}
+#content-main table {
+    color:#000;
+}
+table.docutils {
+    border-collapse:collapse;
+}
+table.docutils thead th {
+    border-bottom:2px solid #dfdfdf;
+    text-align:left;
+}
+table.docutils td, table.docutils th {
+    border-bottom:1px solid #dfdfdf;
+    padding:4px 2px;
+}
+table.docutils td p {
+    margin-top:0;
+    margin-bottom:.5em;
+}
+#documentation #content-related .literal {
+    background:transparent !important;
+}
+div.versionadded,
+div.versionchanged {
+    font-size: 92%; 
+    color:#555;
+}
+div.versionadded span.title,
+div.versionchanged span.title { 
+    font-style: italic;
+}
+/* Verdana bold is too bold; lighten it to compensate */
+#documentation #content-main p > strong,
+#documentation #content-main p > b {
+    color: #555; 
+}
+
+/* Sphinx-specific fixes */
+#documentation a.headerlink {
+    color: #c60f0f;
+    font-size: 0.8em;
+    padding: 0 4px 0 4px;
+    text-decoration: none;
+    visibility: hidden;
+}
+#documentation *:hover > a.headerlink {
+    visibility: visible;
+}
+#documentation a.reference {
+    text-decoration: none;
+}
+#documentation a.reference tt.literal {
+    border-bottom: 1px #234f32 dotted;
+}
+#documentation a.reference em {
+    font-style: normal;
+}
+/* FOOTER */
+
+#footer {
+    clear:both;
+    color:#487858;
+    padding:10px;
+    font-size:90%;
+}
+
+/* COMMENTS */
+
+.comment {
+    margin:15px 0;
+}
+div.comment p {
+    margin-left:1em;
+}
+#weblog div.comment p.date {
+    margin-bottom:.2em;
+    color:#94da3a;
+}
+
+/* FORMS */
+form.wide label {
+    display: block;
+    font-weight: bold;
+    margin-top: 1.5em;
+    margin-bottom: 0;
+}
+form.wide label span {
+    font-weight: normal;
+    color: #555;
+}
+form.wide input,
+form.wide textarea,
+form.wide select {
+    width: 99%;
+    padding: 1px;
+}
+form.wide p {
+    margin: 0;
+}
+form.wide p.submit {
+    text-align: right;
+    margin-top: 1em;
+    margin-right: 0;
+}
+form.wide p.submit input {
+    width: 10em;
+    font-size: 1.5em;
+}
+form.wide p.errors {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    color: red;
+}
+
+/* MISC */
+
+.small {
+    font-size:90%;
+}
+h3 .small {
+    font-size:80%;
+}
+.quiet {
+    font-weight:normal;
+}
+.clear {
+    clear:both;
+}
+#content-main .quiet {
+    color:#487858;
+}
+#content-secondary .quiet {
+    color:#90ba9e;
+}
+
+/*  CLEARFIX KLUDGE */
+
+#columnwrap:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+#columnwrap {
+    display: inline-block;
+}
+
+/* Hides from IE-mac \*/
+* html #columnwrap {
+    height: 1%;
+}
+#columnwrap {
+    display: block;
+}
+/* End hide from IE-mac */
